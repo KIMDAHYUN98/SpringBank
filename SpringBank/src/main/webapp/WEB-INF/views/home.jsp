@@ -14,6 +14,9 @@
 <a href="getAccoutList">사용자정보조회</a>
 <a href="getOrgAuthorize">기관인증</a>
 <a href="getBiz">크롤링</a>
+<a href="pdf/empList">pdf empList</a>
+<a href="pdf/empList2?dept=50">pdf empList2</a>
+<a href="pdf/empList3">empList3 jrxml</a>
 
 
 </body>

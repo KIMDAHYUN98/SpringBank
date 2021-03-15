@@ -28,8 +28,13 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <!-- 내부 폴더에 있는 jsp 파일을 찾아간다.(default) -->
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2" />
 	</beans:bean>
-
+	
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="1" />
+	</beans:bean>
+	
 	<!-- @Aspect @PointCut @Before -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
