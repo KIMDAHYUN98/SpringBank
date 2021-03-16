@@ -21,19 +21,16 @@
 
 	<!-- 정적컨텐츠: CSS, IMG, JS -->
 	<resources mapping="/resources/**" location="/resources/" />
-
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
-		in the /WEB-INF/views directory -->
-	<beans:bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <!-- 내부 폴더에 있는 jsp 파일을 찾아간다.(default) -->
-		<beans:property name="prefix" value="/WEB-INF/views/" />
+	
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/"/>
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="2" />
 	</beans:bean>
 	
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="1" />
-	</beans:bean>
+	</beans:bean>  
 	
 	<!-- @Aspect @PointCut @Before -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
@@ -67,7 +64,11 @@
 	<!-- @Component, @Controller, @Service, @Repository -->
 	<context:component-scan
 		base-package="com.company" />
-
+<!-- MultipartResolver 설정-->
+	 <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		 <beans:property name="maxUploadSize" value="100000000" />
+		 <beans:property name="maxInMemorySize" value="100000000" />
+	 </beans:bean>
 
 
 </beans:beans>

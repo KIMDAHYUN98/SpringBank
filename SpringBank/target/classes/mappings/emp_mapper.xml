@@ -4,10 +4,20 @@
 
 <mapper namespace="com.company.temp.service.impl.EmpMapper">
 	<select id="getEmpList" resultType="map">
-		select first_name 	"firstName",
-			   last_name 	"lastName",
-			   salary 		"salary",
-			   email 		"email"
-		from employees
+		select first_name
+		"firstName",
+		last_name "lastName",
+		salary "salary",
+		email "email"
+		from
+		employees
+	</select>
+
+	<!-- 일별 판매합계 vo, map ... -->
+	<select id="getDayList" resultType="map">
+		select sum(sale_price) AS
+		price, to_char(sale_date, 'yyyy-MM-dd') AS day
+		from sale_tbl_10
+		group by to_char(sale_date, 'yyyy-MM-dd')
 	</select>
 </mapper>
