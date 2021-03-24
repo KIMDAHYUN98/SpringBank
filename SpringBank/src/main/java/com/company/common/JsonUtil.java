@@ -3,9 +3,12 @@ package com.company.common;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import com.google.gson.JsonArray;
 
 public class JsonUtil {
 
@@ -30,10 +33,27 @@ public class JsonUtil {
 		return result.toString();
 	}
 
-	public String toJson(List<Map<String, Object>> map) {
-		String result = "";
-
-		return result;
+	public String toJsons(List<Map<String, Object>> list) {
+		//String result = "";
+		StringBuilder result = new StringBuilder();
+		result.append("[");
+		for(Map<String, Object> map : list) {
+			result.append("{");
+			Iterator<String> keys = map.keySet().iterator();
+			String key = keys.next();
+			result.append('"' + key + '"');
+			result.append(":");
+			String value = (String) map.get(key);
+			result.append('"' + value + '"');
+			if(keys.hasNext() == true) {
+				result.append(", ");
+			}
+			
+			result.append("}");
+			
+		}
+		result.append("]");
+		return result.toString();
 	}
 
 	public String toObjectJson(Object vo) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
@@ -57,4 +77,5 @@ public class JsonUtil {
 
 		return result;
 	}
+
 }
